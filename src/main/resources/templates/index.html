@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>		
+		<meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+		<title>Pizzeria</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+	</head>
+	
+	<body>
+		<h1>Menu Pizze</h1>
+		<a th:href="@{/pizza/new}">
+			<button>Aggiungi una pizza</button>
+		</a>
+	<ul>
+		<li
+			th:each="pizza : ${pizze}"
+			th:object="${pizza}"
+		>
+			<a th:href="@{/pizza/{id} (id=*{id})}">
+				<h1>[[ *{name} ]]</h1>
+			</a>
+			
+			<a th:href="@{/pizza/edit/{id} (id=*{id})}">
+				Modifica
+			</a>
+			
+			<a th:href="@{/pizza/delete/{id} (id=*{id})}">
+				Elimina
+			</a>
+			
+			<a th:href="@{/pizza/soft-delete/{id} (id=*{id})}">
+				Elimina Soft
+			</a>
+		</li>
+	</ul>
+	</body>
+</html>

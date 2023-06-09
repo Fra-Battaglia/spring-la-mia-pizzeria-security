@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>		
+		<meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+		<title>Ingredienti</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+	</head>
+	
+	<body>
+		<h1>Ingredienti</h1> <a th:href="@{ingredient/new}"><button>nuovo ingrediente</button></a>
+		<ul>
+			<li
+				th:each="ingredient : ${ingredients}"
+				th:object="${ingredient}"
+			>
+				[[ *{name} ]] <a th:href="@{ingredient/{id}/delete (id=*{id})}">Elimina</a>
+			</li>
+		</ul>
+		<a href="/"><button>menu</button></a>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>		
+		<meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+		<title>Pizzeria</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+	</head>
+	
+	<body>
+		<h1>Nuova Offerta</h1>
+		<form
+			id="offer-form"
+			th:object="${ingredient}"
+			th:action="@{/ingredient/new}"
+			method="post"
+			class="create-form"
+		>
+			<div hidden>				
+				<label for="pizza_id">Pizza</label>
+				<input type="text" id="pizza" name="pizza">
+			</div>
+			
+			<div>
+				<label for="name">Nome</label>
+				<input type="text" id="name" name="name">
+			</div>
+			
+			<div>				
+				<input type="submit" value="create">
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+.show-img {
+	width: 300px;
+	display: block;
+}
+
+.create-form > div {
+	padding-bottom: 1em;
+}
+
+.create-form > div > label {
+	display: block;
+}

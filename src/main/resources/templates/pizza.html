@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>		
+		<meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+		<title>Pizza [[ ${pizza.name} ]]</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+	</head>
+	
+	<body th:object="${pizza}">
+		<h1>[[ *{name} ]]</h1>
+		<p>[[ *{description} ]]</p>
+		<h3>[[ *{price} ]]€</h3>
+		<img th:src="*{imgUrl}" th:alt="*{name}" class="show-img"/>
+		<h1>Offerte</h1>
+		<a th:href="@{/pizza/{id}/offer/new (id=*{id})}">Aggiungi offerta speciale</a>
+		<ul>
+			<li
+				th:each="offer : *{offers}"
+				th:object="${offer}"
+			>
+				[[ *{title} ]] - [[ *{discount} ]]%, prezzo finale = [[ *{finalPrice} ]]€
+				<a th:href="@{/offer/{id}/edit (id=*{id})}">Modifica offerta</a>
+				
+			</li>
+		</ul>
+		
+		<a href="/"><button>menu</button></a>
+	</body>
+</html>

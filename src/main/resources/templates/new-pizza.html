@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>		
+		<meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+		<title>Pizzeria</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+	</head>
+	
+	<body>
+		<h1>Nuova Pizza</h1>
+		<form
+			id="pizza-form"
+			th:object="${pizza}"
+			th:action="@{/pizza/new}"
+			method="post"
+			class="create-form"
+		>
+			<div>				
+				<label for="name">Nome</label>
+				<input type="text" id="name" name="name">
+			</div>
+			
+			<div>				
+				<label for="description">Descrizione</label>
+				<input type="text" id="description" name="description">
+			</div>
+			
+			<div>
+				<label for="imgUrl">URL immagine</label>
+				<input type="text" id="img_url" name="img_url">
+			</div>
+			
+			<div>
+				<label for="price">Prezzo</label>
+				<input type="number" id="price" name="price">
+			</div>
+			
+			<div>
+				<label>Ingredienti:</label>
+				<div 
+					th:each="ingredient : ${ingredients}"
+					th:object="${ingredient}"
+				>
+					<input 
+						type="checkbox" 
+						name="ingredients" 
+						th:value="*{id}"
+						th:id="*{name}"
+					>
+					<label th:for="*{name}">[[ *{name} ]]</label>
+				</div>
+			</div>
+			
+			<div>				
+				<input type="submit" value="create">
+			</div>
+		</form>
+	</body>
+</html>
