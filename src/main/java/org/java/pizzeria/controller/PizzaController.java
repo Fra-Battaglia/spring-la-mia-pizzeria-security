@@ -48,7 +48,7 @@ public class PizzaController {
 		}
 	
 	// Create
-	@GetMapping("pizza/new")
+	@GetMapping("/admin/pizza/new")
 		public String createNewPizza(Model model) {
 			List<Ingredient> ingredients = ingredientService.findAll();
 			
@@ -58,7 +58,7 @@ public class PizzaController {
 			return "new-pizza";
 		}
 	
-	@PostMapping("pizza/new")
+	@PostMapping("/admin/pizza/new")
 		public String storeNewPizza(@ModelAttribute Pizza pizza) {
 			pizzaService.save(pizza);
 			
@@ -85,7 +85,7 @@ public class PizzaController {
 		}
 	
 	// Update
-	@GetMapping("pizza/edit/{id}")
+	@GetMapping("/admin/pizza/edit/{id}")
 	public String editPizza(
 				Model model,
 				@PathVariable("id") int id
@@ -100,7 +100,7 @@ public class PizzaController {
 		return "edit-pizza";
 	}
 	
-	@PostMapping("pizza/edit/{id}")
+	@PostMapping("/admin/pizza/edit/{id}")
 	public String updatePizza(
 			@PathVariable("id") int id,
 			@ModelAttribute Pizza pizza
@@ -112,7 +112,7 @@ public class PizzaController {
 	
 	// Delete
 	
-	@GetMapping("/pizza/delete/{id}")
+	@GetMapping("/admin/pizza/delete/{id}")
 	public String deletePizza(
 			@PathVariable int id
 		) {
@@ -123,7 +123,7 @@ public class PizzaController {
 		
 		return "redirect:/";
 	}
-	@GetMapping("/pizza/soft-delete/{id}")
+	@GetMapping("/admin/pizza/soft-delete/{id}")
 	public String softDeleteBook(
 			@PathVariable int id
 		) {

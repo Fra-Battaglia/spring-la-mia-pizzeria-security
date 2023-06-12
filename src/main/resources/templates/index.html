@@ -8,30 +8,42 @@
 	
 	<body>
 		<h1>Menu Pizze</h1>
-		<a th:href="@{/pizza/new}">
+		<a 
+			th:href="@{/pizza/new}"
+			sec:authorize="hasAuthority('ADMIN')"
+		>
 			<button>Aggiungi una pizza</button>
 		</a>
-	<ul>
-		<li
-			th:each="pizza : ${pizze}"
-			th:object="${pizza}"
-		>
-			<a th:href="@{/pizza/{id} (id=*{id})}">
-				<h1>[[ *{name} ]]</h1>
-			</a>
-			
-			<a th:href="@{/pizza/edit/{id} (id=*{id})}">
-				Modifica
-			</a>
-			
-			<a th:href="@{/pizza/delete/{id} (id=*{id})}">
-				Elimina
-			</a>
-			
-			<a th:href="@{/pizza/soft-delete/{id} (id=*{id})}">
-				Elimina Soft
-			</a>
-		</li>
-	</ul>
+		<ul>
+			<li
+				th:each="pizza : ${pizze}"
+				th:object="${pizza}"
+			>
+				<a th:href="@{/pizza/{id} (id=*{id})}">
+					<h1>[[ *{name} ]]</h1>
+				</a>
+				
+				<a 
+					th:href="@{/pizza/edit/{id} (id=*{id})}"
+					sec:authorize="hasAuthority('ADMIN')"
+				>
+					Modifica
+				</a>
+				
+				<a 
+					th:href="@{/pizza/delete/{id} (id=*{id})}"
+					sec:authorize="hasAuthority('ADMIN')"
+				>
+					Elimina
+				</a>
+				
+				<a 
+					th:href="@{/pizza/soft-delete/{id} (id=*{id})}"
+					sec:authorize="hasAuthority('ADMIN')"
+				>
+					Elimina Soft
+				</a>
+			</li>
+		</ul>
 	</body>
 </html>
